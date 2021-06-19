@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Clicker</string>
+    <string name="button">Button</string>
+    <string name="plus">+</string>
+    <string name="reload">⟳</string>
+    <string name="x">X</string>
+    <string name="_0">0</string>
+</resources>
