@@ -10,18 +10,18 @@
 
 
     <EditText
-        android:id="@+id/textInput"
+        android:id="@+id/StopNameInput"
         android:layout_width="283dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:hint="Stop Name"
-        app:layout_constraintBottom_toTopOf="@+id/list"
+        app:layout_constraintBottom_toTopOf="@+id/CountList"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"></EditText>
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/CountList"
         android:layout_width="wrap_content"
         android:layout_height="444dp"
         android:layout_marginStart="10dp"
@@ -35,7 +35,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/AddBtn"
         android:layout_width="61dp"
         android:layout_height="60dp"
         android:layout_marginStart="73dp"
@@ -44,11 +44,11 @@
         android:textAlignment="center"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/ResetBtn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/ResetBtn"
         android:layout_width="61dp"
         android:layout_height="60dp"
         android:layout_marginStart="41dp"
@@ -57,11 +57,11 @@
         android:textAlignment="center"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintEnd_toStartOf="@+id/ClearBtn"
+        app:layout_constraintStart_toEndOf="@+id/AddBtn" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ClearBtn"
         android:layout_width="61dp"
         android:layout_height="60dp"
         android:layout_marginStart="41dp"
@@ -71,7 +71,7 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/ResetBtn" />
 
     <TextView
         android:id="@+id/textView"
@@ -80,7 +80,7 @@
         android:text="@string/_0"
         android:textAlignment="center"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/list"
+        app:layout_constraintBottom_toTopOf="@+id/CountList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="list"
+        app:constraint_referenced_ids="CountList"
         tools:layout_editor_absoluteY="74dp" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -126,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="list" />
+        app:constraint_referenced_ids="CountList" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

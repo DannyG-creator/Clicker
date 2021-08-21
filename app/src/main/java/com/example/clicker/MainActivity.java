@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String date;
     private String time;
 
-    private Button button;
-    private Button button2;
-    private Button button3;
-    private ListView list;
-    private Integer count;
+    private Button Add;
+    private Button Reset;
+    private Button Clear;
+    private ListView CountListView;
+    private Integer CountInt;
     private TextView text;
-    private EditText TextInput;
+    private EditText StopName;
 
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
@@ -42,52 +42,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
-        TextInput = findViewById(R.id.textInput);
-        list = findViewById(R.id.list);
+        Add = findViewById(R.id.AddBtn);
+        Reset = findViewById(R.id.ResetBtn);
+        Clear = findViewById(R.id.ClearBtn);
+        StopName = findViewById(R.id.StopNameInput);
+        CountListView = findViewById(R.id.CountList);
         text = findViewById(R.id.textView);
 
-        count = 0;
+        CountInt = 0;
 
         items = SaveList.readData(this);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        list.setAdapter(adapter);
+        CountListView.setAdapter(adapter);
 
         /* final MediaPlayer ClickSound = MediaPlayer.create(this, R.raw.click); */
 
-        button.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        list.setOnItemClickListener(this);
+        Add.setOnClickListener(this);
+        Clear.setOnClickListener(this);
+        Reset.setOnClickListener(this);
+        CountListView.setOnItemClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        count = count +1;
+        CountInt = CountInt +1;
         calendar = Calendar.getInstance();
         time = DateFormat.getTimeInstance().format(calendar.getTime());
         date = DateFormat.getDateInstance().format((calendar.getTime()));
         switch(v.getId()) {
-            case R.id.button:
-                String Input = TextInput.getText().toString();
-                adapter.add((String.valueOf(count)) +", " + Input + ",    " +  time + ",    " + date + "    ");
-                text.setText(String.valueOf(count));
+            case R.id.AddBtn:
+                String Input = StopName.getText().toString();
+                adapter.add((String.valueOf(CountInt)) +", " + Input + ",    " +  time + ",    " + date + "    ");
+                text.setText(String.valueOf(CountInt));
                 SaveList.writeData(items, this);
                 break;
-            case R.id.button2:
-                TextInput.setText("");
-                count = 0;
-                text.setText(String.valueOf(count));
+            case R.id.ResetBtn:
+                StopName.setText("");
+                CountInt = 0;
+                text.setText(String.valueOf(CountInt));
                 Toast.makeText(this, "Count Reset, Please enter a new Stop Name", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.button3:
-                TextInput.setText("");
-                count = 0;
-                text.setText(String.valueOf(count));
+            case R.id.ClearBtn:
+                StopName.setText("");
+                CountInt = 0;
+                text.setText(String.valueOf(CountInt));
                 adapter.clear();
                 Toast.makeText(this, "List Cleared", Toast.LENGTH_SHORT).show();
                 break;
@@ -98,12 +98,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         items.remove(position);
-        count = count -1;
-        if(count < 0 ){
-            count = 0;
+        CountInt = CountInt -1;
+        if(CountInt < 0 ){
+            CountInt = 0;
         }
 
-        text.setText(String.valueOf(count));
+        text.setText(String.valueOf(CountInt));
         adapter.notifyDataSetChanged();
         SaveList.writeData(items, this);
     }
